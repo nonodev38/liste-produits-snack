@@ -2,9 +2,4 @@
 2,Lait demi-écrémé,1.30
 3,Pommes (1kg),3.00
 4,Riz basmati (500g),1.80
-4,Riz basmati (500g),1.80
-4,Riz basmati (500g),1.80
-4,Riz test (500g),1.80
-4,Riz basmati (500g),1.80
-4,Riz basmati (500g),1.80
-
+5,fuck test,1.80
