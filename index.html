@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ma Liste de Produits</title>
+    <style>
+      body { font-family: sans-serif; padding: 20px; }
+      ul { line-height: 1.6; }
+    </style>
+  </head>
+  <body>
+    <h1>🛒 Ma Liste de Produits</h1>
+    <ul id="liste-produits"></ul>
+
+    <script>
+      const produits = [
+        "Pain complet",
+        "Lait demi-écrémé",
+        "Pommes (1kg)",
+        "Riz basmati (500g)",
+        "Café moulu",
+        "Œufs (6)",
+        "Dentifrice"
+      ];
+
+      const ul = document.getElementById("liste-produits");
+      produits.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = p;
+        ul.appendChild(li);
+      });
+    </script>
+  </body>
+</html>
