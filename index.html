@@ -17,8 +17,8 @@
 
         lignes.forEach(ligne => {
           const parts = ligne.split(',');
-          const designation = parts[2]?.trim();
-          const prix = parts[3]?.trim();
+          const designation = parts[1]?.trim();
+          const prix = parts[2]?.trim();
 
           if (designation && prix) {
             const li = document.createElement('li');
