@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Ma Liste de Produits</title>
-    <style>
-      body { font-family: sans-serif; padding: 20px; }
-      ul { line-height: 1.6; }
-    </style>
-  </head>
-  <body>
-    <h1>🛒 Ma Liste de Produits</h1>
-    <ul id="liste-produits"></ul>
+<head>
+  <meta charset="UTF-8">
+  <title>Liste Produits (Designation + Prix)</title>
+</head>
+<body>
+  <h1>🛒 Liste des Produits</h1>
+  <ul id="liste"></ul>
 
-    <script>
-      const produits = [
-        "Pain complet",
-        "Lait demi-écrémé",
-        "Pommes (1kg)",
-        "Riz basmati (500g)",
-        "Café moulu",
-        "Œufs (6)",
-        "Dentifrice"
-      ];
+  <script>
+    fetch('bd_produit.txt')
+      .then(response => response.text())
+      .then(data => {
+        const lignes = data.trim().split('\n');
+        const ul = document.getElementById('liste');
 
-      const ul = document.getElementById("liste-produits");
-      produits.forEach(p => {
-        const li = document.createElement("li");
-        li.textContent = p;
-        ul.appendChild(li);
+        lignes.forEach(ligne => {
+          const parts = ligne.split(',');
+          const designation = parts[2]?.trim();
+          const prix = parts[3]?.trim();
+
+          if (designation && prix) {
+            const li = document.createElement('li');
+            li.textContent = `${designation} - ${prix} €`;
+            ul.appendChild(li);
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Erreur de chargement du fichier :', error);
       });
-    </script>
-  </body>
+  </script>
+</body>
 </html>
