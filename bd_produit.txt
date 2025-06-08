@@ -4,7 +4,7 @@
 4,Riz basmati (500g),1.80
 4,Riz basmati (500g),1.80
 4,Riz basmati (500g),1.80
-4,Riz basmati (500g),1.80
+4,Riz test (500g),1.80
 4,Riz basmati (500g),1.80
 4,Riz basmati (500g),1.80
 
