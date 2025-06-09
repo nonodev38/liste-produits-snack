@@ -3,33 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <title>Liste Produits (Designation + Prix)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #555;
+    }
+    #recherche {
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-  <h1>🛒 Produits disponibles</h1>
+  <h1>📦 Système de Consultation de Produits</h1>
+  <h2>🛒 Produits disponibles</h2>
+
+  <input type="text" id="recherche" placeholder="🔍 Rechercher un produit...">
   <ul id="liste"></ul>
 
   <script>
+    let produits = [];
+
+    // Fonction pour afficher les produits filtrés
+    function afficherProduits(filtre = '') {
+      const ul = document.getElementById('liste');
+      ul.innerHTML = ''; // vide la liste
+
+      produits
+        .filter(p => p.designation.toLowerCase().includes(filtre.toLowerCase()))
+        .forEach(p => {
+          const li = document.createElement('li');
+          li.textContent = `${p.designation} - ${p.prix} €`;
+          ul.appendChild(li);
+        });
+    }
+
+    // Chargement du fichier texte
     fetch('bd_produit.txt?t=' + new Date().getTime())
       .then(response => response.text())
       .then(data => {
         const lignes = data.trim().split('\n');
-        const ul = document.getElementById('liste');
-
-        lignes.forEach(ligne => {
+        produits = lignes.map(ligne => {
           const parts = ligne.split(',');
-          const designation = parts[1]?.trim();
-          const prix = parts[2]?.trim();
+          return {
+            designation: parts[1]?.trim(),
+            prix: parts[2]?.trim()
+          };
+        }).filter(p => p.designation && p.prix);
 
-          if (designation && prix) {
-            const li = document.createElement('li');
-            li.textContent = `${designation} - ${prix} €`;
-            ul.appendChild(li);
-          }
-        });
+        afficherProduits(); // affichage initial
       })
       .catch(error => {
         console.error('Erreur de chargement du fichier :', error);
       });
+
+    // Événement sur le champ de recherche
+    document.getElementById('recherche').addEventListener('input', (e) => {
+      afficherProduits(e.target.value);
+    });
   </script>
 </body>
 </html>
