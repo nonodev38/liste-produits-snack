@@ -4,55 +4,24 @@
   <meta charset="UTF-8">
   <title>Liste Produits</title>
   <style>
-    :root {
-      --bg: #f8f9fa;
-      --card-bg: #ffffff;
-      --primary: #007bff;
-      --text: #333;
-      --shadow: rgba(0, 0, 0, 0.1);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
+      font-family: Arial, sans-serif;
       padding: 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .container {
-      max-width: 600px;
-      width: 100%;
+      background: #f8f9fa;
     }
 
     h1 {
       text-align: center;
-      font-size: 2em;
-      margin-bottom: 10px;
-      color: var(--primary);
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 1.3em;
-      margin-bottom: 20px;
-      color: #666;
+      color: #007bff;
     }
 
     #recherche {
       width: 100%;
-      padding: 10px 12px;
+      padding: 10px;
+      margin: 20px 0;
       font-size: 16px;
-      margin-bottom: 20px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      outline-color: var(--primary);
+      border-radius: 6px;
     }
 
     ul {
@@ -61,84 +30,93 @@
     }
 
     li {
-      background-color: var(--card-bg);
-      padding: 15px 20px;
-      margin-bottom: 12px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px var(--shadow);
-      transition: transform 0.2s ease;
-    }
-
-    li:hover {
-      transform: scale(1.02);
+      background: #fff;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
     .prix {
       float: right;
       font-weight: bold;
-      color: var(--primary);
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.5em;
-      }
-
-      .prix {
-        display: block;
-        float: none;
-        margin-top: 8px;
-      }
+      color: #007bff;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📦 Snack-Epicerie</h1>
-    <h2>🛒 Produits disponibles</h2>
 
-    <input type="text" id="recherche" placeholder="🔍 Rechercher un produit...">
-
-    <ul id="liste"></ul>
-  </div>
+  <h1>🛒 Liste de Produits</h1>
+  <input type="text" id="recherche" placeholder="Rechercher un produit...">
+  <ul id="liste"></ul>
 
   <script>
-    let produits = [];
+    var produits = [];
 
-    function afficherProduits(filtre = '') {
-      const ul = document.getElementById('liste');
+    function afficherProduits(filtre) {
+      var ul = document.getElementById('liste');
       ul.innerHTML = '';
-
-      produits
-        .filter(p => p.designation.toLowerCase().includes(filtre.toLowerCase()))
-        .forEach(p => {
-          const li = document.createElement('li');
-          li.innerHTML = `${p.designation}<span class="prix">${p.prix} €</span>`;
+      for (var i = 0; i < produits.length; i++) {
+        var produit = produits[i];
+        if (produit.designation.toLowerCase().indexOf(filtre.toLowerCase()) !== -1) {
+          var li = document.createElement('li');
+          li.innerHTML = produit.designation + '<span class="prix">' + produit.prix + ' €</span>';
           ul.appendChild(li);
+        }
+      }
+    }
+
+    document.getElementById('recherche').addEventListener('input', function () {
+      afficherProduits(this.value);
+    });
+
+    function chargerProduitsAvecFetch() {
+      fetch('bd_produit.txt?t=' + new Date().getTime())
+        .then(function(response) { return response.text(); })
+        .then(function(data) {
+          traiterDonnees(data);
+        })
+        .catch(function() {
+          // fallback en cas d'erreur avec fetch
+          console.warn('fetch échoué, passage à XMLHttpRequest');
+          chargerProduitsAvecXHR();
         });
     }
 
-    fetch('bd_produit.txt?t=' + new Date().getTime())
-      .then(response => response.text())
-      .then(data => {
-        const lignes = data.trim().split('\n');
-        produits = lignes.map(ligne => {
-          const parts = ligne.split(',');
-          return {
-            designation: parts[1]?.trim(),
-            prix: parts[2]?.trim()
-          };
-        }).filter(p => p.designation && p.prix);
+    function chargerProduitsAvecXHR() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'bd_produit.txt?t=' + new Date().getTime(), true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          traiterDonnees(xhr.responseText);
+        }
+      };
+      xhr.send();
+    }
 
-        afficherProduits();
-      })
-      .catch(error => {
-        console.error('Erreur de chargement du fichier :', error);
-      });
+    function traiterDonnees(texte) {
+      var lignes = texte.trim().split('\n');
+      produits = [];
+      for (var i = 0; i < lignes.length; i++) {
+        var parts = lignes[i].split(',');
+        if (parts.length >= 3) {
+          produits.push({
+            designation: parts[1].trim(),
+            prix: parts[2].trim()
+          });
+        }
+      }
+      afficherProduits('');
+    }
 
-    document.getElementById('recherche').addEventListener('input', e => {
-      afficherProduits(e.target.value);
-    });
+    // Détection automatique
+    if (window.fetch) {
+      chargerProduitsAvecFetch();
+    } else {
+      console.warn('fetch non supporté, utilisation de XMLHttpRequest');
+      chargerProduitsAvecXHR();
+    }
   </script>
+
 </body>
 </html>
