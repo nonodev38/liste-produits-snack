@@ -1,56 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Liste Produits Snack</title>
+  <title>Liste Produits</title>
   <style>
+    :root {
+      --bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --primary: #007bff;
+      --text: #333;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
       padding: 20px;
+      display: flex;
+      justify-content: center;
     }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 22px;
-      color: #555;
-    }
-    #recherche {
-      padding: 8px;
+
+    .container {
+      max-width: 600px;
       width: 100%;
-      max-width: 300px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.3em;
       margin-bottom: 20px;
+      color: #666;
+    }
+
+    #recherche {
+      width: 100%;
+      padding: 10px 12px;
       font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline-color: var(--primary);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: var(--card-bg);
+      padding: 15px 20px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px var(--shadow);
+      transition: transform 0.2s ease;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+    }
+
+    .prix {
+      float: right;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      .prix {
+        display: block;
+        float: none;
+        margin-top: 8px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>📦 Produits dispoibles selon stock</h1>
-  <h2>🛒 Rechercher un produit</h2>
+  <div class="container">
+    <h1>📦 Système de Produits</h1>
+    <h2>🛒 Produits disponibles</h2>
 
-  <input type="text" id="recherche" placeholder="🔍 Rechercher un produit...">
-  <ul id="liste"></ul>
+    <input type="text" id="recherche" placeholder="🔍 Rechercher un produit...">
+
+    <ul id="liste"></ul>
+  </div>
 
   <script>
     let produits = [];
 
-    // Fonction pour afficher les produits filtrés
     function afficherProduits(filtre = '') {
       const ul = document.getElementById('liste');
-      ul.innerHTML = ''; // vide la liste
+      ul.innerHTML = '';
 
       produits
         .filter(p => p.designation.toLowerCase().includes(filtre.toLowerCase()))
         .forEach(p => {
           const li = document.createElement('li');
-          li.textContent = `${p.designation} - ${p.prix} €`;
+          li.innerHTML = `${p.designation}<span class="prix">${p.prix} €</span>`;
           ul.appendChild(li);
         });
     }
 
-    // Chargement du fichier texte
     fetch('bd_produit.txt?t=' + new Date().getTime())
       .then(response => response.text())
       .then(data => {
@@ -63,14 +130,13 @@
           };
         }).filter(p => p.designation && p.prix);
 
-        afficherProduits(); // affichage initial
+        afficherProduits();
       })
       .catch(error => {
         console.error('Erreur de chargement du fichier :', error);
       });
 
-    // Événement sur le champ de recherche
-    document.getElementById('recherche').addEventListener('input', (e) => {
+    document.getElementById('recherche').addEventListener('input', e => {
       afficherProduits(e.target.value);
     });
   </script>
