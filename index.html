@@ -114,22 +114,33 @@
       };
       xhr.send();
     }
+function traiterDonnees(texte) {
+  var lignes = texte.trim().split('\n');
+  produits = [];
+  for (var i = 0; i < lignes.length; i++) {
+    var parts = lignes[i].split('|');
+    if (parts.length >= 4) {
+      var designationComplete = parts[1].trim() + ' ' + parts[2].trim();
 
-    function traiterDonnees(texte) {
-      var lignes = texte.trim().split('\n');
-      produits = [];
-      for (var i = 0; i < lignes.length; i++) {
-        var parts = lignes[i].split(',');
-        if (parts.length >= 3) {
-          produits.push({
-            designation: parts[1].trim(),
-            prix: parts[2].trim()
-          });
-        }
-      }
-      trierProduitsParNom();
-      afficherProduits('');
+      // Conversion du prix au format float (en remplaçant la virgule)
+      var prixFloat = parseFloat(parts[3].replace(',', '.'));
+
+      // Format monétaire français (euro)
+      var prixFormate = prixFloat.toLocaleString('fr-FR', {
+        style: 'currency',
+        currency: 'EUR'
+      });
+
+      produits.push({
+        designation: designationComplete,
+        prix: prixFormate
+      });
     }
+  }
+  trierProduitsParNom();
+  afficherProduits('');
+}
+
 
     // Détection automatique : fetch ou fallback
     if (window.fetch) {
