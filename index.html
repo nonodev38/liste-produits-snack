@@ -5,25 +5,27 @@
   <title>Liste Produits</title>
   <style>
     
-    .entete {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    
-    .bloc-gauche, .bloc-droite {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-weight: bold;
-      color: #333;
-    }
-    
-    .logo {
-      width: 600px;
-      height: auto;
-    }
+.entete-colonne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.bloc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.logo {
+  width: 800px;
+  height: auto;
+}
+
     
     body {
       font-family: Arial, sans-serif;
@@ -81,17 +83,16 @@
 </head>
 <body>
   
-  <div class="entete">
-    <div class="bloc-gauche">
-      <img src="Boulangerie.png" alt="Boulangerie" class="logo">
-      <div>Boulangerie</div>
-    </div>
-    <div class="bloc-droite">
-      <img src="Infos.png" alt="Infos" class="logo">
-      <div>Infos</div>
-    </div>
+<div class="entete-colonne">
+  <div class="bloc">
+    <img src="boulangerie.png" alt="Boulangerie" class="logo">
+    <div>Boulangerie</div>
   </div>
-
+  <div class="bloc">
+    <img src="infos.png" alt="Infos" class="logo">
+    <div>Infos</div>
+  </div>
+</div>
 
   <div class="container">
     <h1>🛒 Liste de Produits</h1>
