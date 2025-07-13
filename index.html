@@ -76,7 +76,7 @@
         var produit = produits[i];
         if (produit.designation.toLowerCase().indexOf(filtre.toLowerCase()) !== -1) {
           var li = document.createElement('li');
-          li.innerHTML = produit.designation + '<span class="prix">' + produit.prix + ' €</span>';
+          li.innerHTML = produit.designation + '<span class="prix">' + produit.prix + '</span>';
           ul.appendChild(li);
         }
       }
