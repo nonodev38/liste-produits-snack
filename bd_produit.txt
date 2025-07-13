@@ -1,4 +1,117 @@
-1,Pain complet,2.50
-2,Lait demi-écrémé,1.30
-3,Pommes (1kg),3.00
-4,Riz basmati (500g),1.80
+1|Palet Breton U|125g|2,8
+2|Petit Beurre U|200g|2,3
+3|Palmiers feuilletés U|100g|2,1
+4|Kinder Delice|39g|1,5
+5|Pistache|200g|4,5
+6|Cacahuete grillés|150g|1,8
+7|Cacahuete salés |250g|2,2
+8|Chips salés petit paquet U|30g|1
+9|pop corn salé |100g|3
+10|Chips soufflés gout fromage|100g|2
+11|Chips soufflés gout cacahuete|100g|2
+12|Popcorn BAFF caramel|100g|3
+13|Barres de céréales Granini Pomme|21g|1
+14|Barres de céréales Granini Chocolat|21g|1
+15|Barres de céréales Granini Noisette|21g|1
+16|Jus d'Orange multifruits U|1L|3,5
+17|Jus de Pomme 1L U|1L|3
+18|Jus Raisin 1L U|1L|3,5
+19|Lait végétal Soja U|1L|3
+20|Lait demi ecrémé|1L|2,5
+21|Biscotte Hudebert|145g - 18 pce|2,5
+22|Pain de mie Harrys|250g|2,5
+23|Brioche Tranchée U|500g|4,7
+24|Stick café soluble nescafé|2g|0,35
+25|Stick chocolat poudre Nesquik|13,5g|0,8
+26|Cereal mini Kellogs|27,5g|1,5
+27|Compote de pomme Pom'Potes|90g|1,5
+28|Miel de fleurs U|250g|4,5
+29|Sucre sachet|10g|0,1
+30|Mais conserve daucy|150g|2,4
+31|Ravioli conserve U|400g|3,5
+32|Cassoulet conserve U|420g|3,2
+33|Saucisse lentille conserve U|420g|3,2
+34|Lentille conserve Bonduelle|310g|3,5
+35|Thon à huile conserve U|70g|2
+36|Thon à huile conserve U|135g|3
+37|Sel (dépannage gratuit)|1g|0
+38|Poivre (dépannage gratuit)|1g|0
+39|Vinaigre Balsamique U|25cl|4
+40|Huile de tournesol U|1L|4,5
+41|Pate Pipe Rigate Panzanni|500g|3
+42|Nouille chinoise Poulet|70g|2
+43|Nouille chinoise Curry|70g|2
+44|Nouille chinoise Poulet|70g|2
+45|Riz Long U|500g|3,5
+46|Sachet Puré Mouseline|31,25g|1,5
+47|Sauce tomate tube U|180g|2,7
+48|Sauce bolognaise pot U|200g|3
+49|Double concentré de tomate conserve U|70g|2,1
+50|Thé vert Lipton|sachet|0,4
+51|Thé menth Lipton|sachet|0,4
+52|Infusion vervaine U|sachet|0,3
+53|Bounty|57g|2
+54|Balisto Jaune|18,5g|1,5
+55|Balista Vert|18,5g|1,5
+56|Snickers|50g|2
+57|Twix|50g|2
+58|Lion|42g|2
+59|KitKat|41,5g|2
+60|Smarties|34g|2
+61|Kinder Surprise|20g|3,5
+62|M&M's|36g|2
+63|Tablette chocolat noir U|100g|3
+64|Tablette chocolat Lait U|100g|3
+65|Tablette chocolat Blanc U|100g|3
+66|Sucette Chupa Chups mini|6g|0,4
+67|Bonbon Régal'ad créma fruit|7g|0,2
+68|Malabar gout Tutti Frutti|7g|0,25
+69|Freedent menth douce X10|14g|1,8
+70|Freedent fraise douce X10|14g|2,2
+71|Pot Nutella en verre|220g|5
+72|Briquet Fun Flam|unité|2
+73|Boite allumette x240|boite|2
+74|Allume Feu U|Batonnets|0,4
+75|Torche plate magnetique|unité|15
+76|Petite torche LED|unité|8
+77|Charbon de bois U|2,5Kg|9
+78|Assiettes carton blanc 23cm|unité|0,2
+79|Cuillères à soupe plastique réutilisable|unité|0,5
+80|Cuillères à café plastique réutilisable|unité|0,5
+81|Fourchette plastique réutilisable|unité|0,5
+82|Couteaux plastique réutilisable|unité|0,5
+83|Gobelets carton jetable 18cl|unité|0,2
+84|Gaz butane|120g|5
+85|Spirale anti moustique avec socle|x10|7
+86|Spirales citronnelle avec support|x12|5
+87|Spirales encens avec support|x3|6
+88|Frises adhesive anti-mouche|x3|3,5
+89|Ruban attrape mouche|x1|0,8
+90|Lunette natation junior|1 paire|6
+91|Lunette natation adulte|1 paire|6
+92|jeux 54 cartes|1|4
+93|jeux yam|1|9
+94|jeux mikado|1|6
+95|Piles AA (LR6)|1 pile|1,5
+96|Piles AAA (LR03)|1 pile|1,5
+97|Piles plate CR201|1 pile|1
+98|Feutre|x12|4
+99|Crayon couleur|x12|3
+100|Cahier 96 pages 17 x 22cm|1|3
+101|Preservatif|1|1
+102|Feuille à rouler OCB|1|2
+103|Feuille à rouler OCB SLIM|1|2,5
+104|Multiprise triplette|1|8
+105|Multiprise Double|1|6,5
+106|Pince à linge en bois|1|0,3
+107|Corde à linge 10m|1|7
+108|Pulverisateur 1L|1|8
+109|Serviette de plage|1|12
+110|Cognac (mini  bouteille)|20cl|13
+111|Whisky (mini bouteille)|20cl|9
+112|Rhum (mini bouteille)|20cl|8
+113|Genepi (mini bouteille)|20cl|16
+114|Vodka (mini bouteille)|20cl|8
+115|Armagnac (mini bouteille)|20cl|10
+116|Limoncello (mini bouteille)|20cl|12
+117|maillot de bain homme XL|1|14
